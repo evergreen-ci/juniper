@@ -1,3 +1,3 @@
 proto:
-	@mkdir -p golang
-	protoc --go_out=plugins=grpc:golang *.proto
+	@mkdir -p gopb
+	protoc --go_out=plugins=grpc:gopb *.proto
