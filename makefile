@@ -49,5 +49,5 @@ proto: $(buildDir)/protoc
 
 # start cleanup targets
 clean:
-	rm -rf $(buildDir) $(pbDir)
+	rm -rf $(buildDir)
 # end cleanup targets
