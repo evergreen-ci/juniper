@@ -32,9 +32,12 @@ $(shell mkdir -p $(buildDir))
 protocVersion := 3.19.3
 protoOS := $(shell uname -s | tr A-Z a-z)
 ifeq ($(protoOS),darwin)
-protoOS := osx
-endif
+# we need to set this for M1s because the pinned version does not have an
+# arm64 flavor
+protoOS := osx-x86_64
+else
 protoOS := $(protoOS)-$(shell uname -m | tr A-Z a-z)
+endif
 $(buildDir)/protoc:
 	curl --retry 10 --retry-max-time 60 -L0 https://github.com/protocolbuffers/protobuf/releases/download/v$(protocVersion)/protoc-$(protocVersion)-$(protoOS).zip --output protoc.zip
 	unzip -q protoc.zip -d $(buildDir)/protoc
